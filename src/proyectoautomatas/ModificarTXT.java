@@ -20,6 +20,7 @@ public class ModificarTXT extends javax.swing.JFrame {
     public ModificarTXT() {
         initComponents();
         setLocationRelativeTo(null);
+        jButton1.setToolTipText("Guardar cambios");
     }
 
     /**
