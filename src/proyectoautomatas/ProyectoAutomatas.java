@@ -5,6 +5,8 @@
  */
 package proyectoautomatas;
 
+import Clases.ManejoErrores;
+
 /**
  *
  * @author igeni

@@ -5,9 +5,11 @@
  */
 package proyectoautomatas;
 
-import java.awt.FlowLayout;
+import Clases.ManejoErrores;
+import java.util.List;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.util.Arrays;
 import javafx.scene.paint.Color;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
@@ -28,6 +30,7 @@ public class DetectorDeTokens extends javax.swing.JFrame {
     public Clases.ManejoTXT archivo = new Clases.ManejoTXT();
     public DefaultListModel modelo = new DefaultListModel();
     public DefaultTableModel modelotable = new DefaultTableModel();
+    private ManejoErrores manejo;
     File seleccionado;
     boolean modificar = false;
     int lineaerror = 5;
@@ -46,6 +49,8 @@ public class DetectorDeTokens extends javax.swing.JFrame {
         modelotable.addColumn("Cantidad");
         jTable1.setModel(modelotable);
         jButton1.setToolTipText("Cargar");
+        
+        manejo = new ManejoErrores();
     }
 
     /**
@@ -394,7 +399,44 @@ public class DetectorDeTokens extends javax.swing.JFrame {
     }//GEN-LAST:event_jList1KeyReleased
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        jTextArea1.setText("Compilando... \nCompilación exitosa");
+        //jTextArea1.setText("Compilando... \nCompilación exitosa"); 
+        short index = 0,indextokens;
+        String tokens;
+        boolean ErrorLexico = true;
+        List<String> ArregloTokens;   
+        manejo.ReinicioArrayList();
+        
+        while(index < modelo.getSize() && ErrorLexico){
+            tokens = "";
+            tokens = modelo.getElementAt(index).toString(); //Asigna la cadena a tokens
+            tokens = tokens.substring(5, tokens.length());
+            tokens = tokens.trim(); //Elimina los espacios al inicio y fin
+            if(tokens.length() != 0){
+              ArregloTokens = Arrays.asList(tokens.split(" ")); //Separa todos las cadenas si hay un espacio de por medio
+               indextokens = 0;
+               while(indextokens < ArregloTokens.size() && ErrorLexico){ //Manda cada cadena a la clase manejoerror
+                  
+                    if(ArregloTokens.get(indextokens).length() != 0){//Retorna true si es aceptada la cadena y un false si no
+                        if(!manejo.BuscarErrores(ArregloTokens.get(indextokens))){ 
+                            ErrorLexico = false;
+                            jList1.setSelectedIndex(index);
+                            jList1.setSelectionBackground(java.awt.Color.red);
+                            jTabbedPane1.setSelectedIndex(0);
+                            jTextArea1.setText("Erro en el archivo\nLine ...  "+(index+1)+"\n"+ArregloTokens.get(indextokens));
+                        }
+                    }
+                    indextokens++;
+               }
+            }
+            index++;
+        }
+        
+        //Muestra todos los tokens encontrados si la compilacion fue un exito
+        if(ErrorLexico){
+          jTabbedPane1.setSelectedIndex(1);
+          jTable1.setModel(manejo.mostrar());
+        }
+   
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
