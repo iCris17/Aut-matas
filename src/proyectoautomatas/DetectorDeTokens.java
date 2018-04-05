@@ -33,7 +33,7 @@ public class DetectorDeTokens extends javax.swing.JFrame {
     private ManejoErrores manejo;
     File seleccionado;
     boolean modificar = false;
-    int lineaerror = 5;
+    int lineaerror = 0;
     public DetectorDeTokens() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -165,11 +165,13 @@ public class DetectorDeTokens extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Progreso", jPanel2);
@@ -191,11 +193,11 @@ public class DetectorDeTokens extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Resultado", jPanel3);
@@ -206,22 +208,22 @@ public class DetectorDeTokens extends javax.swing.JFrame {
             }
         });
         jList1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jList1MouseClicked(evt);
-            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jList1MousePressed(evt);
             }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jList1MouseClicked(evt);
+            }
         });
         jList1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jList1KeyTyped(evt);
+            }
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jList1KeyPressed(evt);
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jList1KeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jList1KeyTyped(evt);
             }
         });
         jScrollPane1.setViewportView(jList1);
@@ -245,14 +247,14 @@ public class DetectorDeTokens extends javax.swing.JFrame {
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(108, 108, 108)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(78, 78, 78)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(114, 114, 114)))
+                        .addGap(0, 404, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -272,18 +274,16 @@ public class DetectorDeTokens extends javax.swing.JFrame {
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                                .addGap(63, 63, 63)
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(41, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -315,6 +315,7 @@ public class DetectorDeTokens extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        lineaerror = 0;
         JFileChooser escoger = new JFileChooser();
         escoger.setFileFilter(filtrador);
         int opcion = escoger.showOpenDialog(this);
@@ -328,6 +329,7 @@ public class DetectorDeTokens extends javax.swing.JFrame {
             jButton3.setVisible(true);
             jButton2.setToolTipText("Compilar");
             jButton3.setToolTipText("Modificar");
+            jTextArea1.setText("");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -366,6 +368,10 @@ public class DetectorDeTokens extends javax.swing.JFrame {
             jList1.setSelectionBackground(java.awt.Color.RED);
         else
             jList1.setSelectionBackground(java.awt.Color.GRAY);
+        if ((evt.getKeyCode() == KeyEvent.VK_UP) && ((lineaerror == 1) && jList1.getSelectedIndex() == 0))
+            jList1.setSelectionBackground(java.awt.Color.RED);
+        else if ((evt.getKeyCode() == KeyEvent.VK_DOWN) && ((lineaerror == jList1.getModel().getSize())) && jList1.getSelectedIndex() == jList1.getModel().getSize()-1)
+            jList1.setSelectionBackground(java.awt.Color.RED);
     }//GEN-LAST:event_jList1KeyPressed
 
     private void jList1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jList1KeyTyped
@@ -419,10 +425,11 @@ public class DetectorDeTokens extends javax.swing.JFrame {
                     if(ArregloTokens.get(indextokens).length() != 0){//Retorna true si es aceptada la cadena y un false si no
                         if(!manejo.BuscarErrores(ArregloTokens.get(indextokens))){ 
                             ErrorLexico = false;
+                            lineaerror = index + 1;
                             jList1.setSelectedIndex(index);
                             jList1.setSelectionBackground(java.awt.Color.red);
                             jTabbedPane1.setSelectedIndex(0);
-                            jTextArea1.setText("Erro en el archivo\nLine ...  "+(index+1)+"\n"+ArregloTokens.get(indextokens));
+                            jTextArea1.setText("Error en el archivo\nLine ...  "+(index+1)+"\n"+ArregloTokens.get(indextokens));
                         }
                     }
                     indextokens++;
@@ -435,6 +442,7 @@ public class DetectorDeTokens extends javax.swing.JFrame {
         if(ErrorLexico){
           jTabbedPane1.setSelectedIndex(1);
           jTable1.setModel(manejo.mostrar());
+          jTextArea1.setText("Compilación exitosa");
         }
    
     }//GEN-LAST:event_jButton2ActionPerformed
