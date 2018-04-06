@@ -254,7 +254,7 @@ public class DetectorDeTokens extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 404, Short.MAX_VALUE)))
+                        .addGap(0, 60, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -423,6 +423,7 @@ public class DetectorDeTokens extends javax.swing.JFrame {
                while(indextokens < ArregloTokens.size() && ErrorLexico){ //Manda cada cadena a la clase manejoerror
                   
                     if(ArregloTokens.get(indextokens).length() != 0){//Retorna true si es aceptada la cadena y un false si no
+                       // System.out.println(ArregloTokens.get(indextokens));
                         if(!manejo.BuscarErrores(ArregloTokens.get(indextokens))){ 
                             ErrorLexico = false;
                             lineaerror = index + 1;
@@ -439,7 +440,7 @@ public class DetectorDeTokens extends javax.swing.JFrame {
         }
         
         //Muestra todos los tokens encontrados si la compilacion fue un exito
-        if(ErrorLexico){
+       if(ErrorLexico){
           jTabbedPane1.setSelectedIndex(1);
           jTable1.setModel(manejo.mostrar());
           jTextArea1.setText("Compilación exitosa");

@@ -64,60 +64,39 @@ public class ManejoErrores {
           
           short index = 0;
           //Busca si la palabra mandada es una palabra reservada
-          while(index < PalabrasReser.size() && !encontrado){
-                
-              if(examinar.equals(PalabrasReser.get(index).getTokens())){
-                 PalabrasReser.get(index).setCantidad();
-                 encontrado = true;
-               }
-              else if(contrario.equals(PalabrasReser.get(index).getTokens())){
-                  index = (short)PalabrasReser.size();
-                  estado = true;
-              }
+          if(Escaneo(examinar)){
               
-              index++;
-          }
-                          
-            if(!encontrado && !estado){
-               //Insertando un identificador
-             
-               if(examinar.contains(",")){
-                 String arr[] = examinar.split(",");
-                  index = 0;
-                 boolean es = true;
-                 while(index < arr.length && es){
-                      
-                     if(Escaneo(arr[index])){
-                        InsercionIdentificador(arr[index]);
-                     }
-                     else es = false;    
-                     index++;
-                 }
-                 
-                 if(es){
-                   index = 0;
-                   //Agrega n comas, en la coleccion de signos
-                   while(index < (arr.length-1)){
-                       InsertarDatoArray(Signos,",");
-                    index++;
-                   }
-                 }
-                 
-                 return es;
+                while(index < PalabrasReser.size() && !encontrado){
+                
+                        if(examinar.equals(PalabrasReser.get(index).getTokens())){
+                               PalabrasReser.get(index).setCantidad();
+                               encontrado = true;
+                         }
+                        else if(contrario.equals(PalabrasReser.get(index).getTokens())){
+                                    index = (short)PalabrasReser.size();
+                                    estado = true;
+                         }
+              
+                  index++;
                }
-               else{
-               
+                          
+                if(!encontrado && !estado){
+                     //Insertando un identificador
+             
                   if(Escaneo(examinar)){
                      InsercionIdentificador(examinar);
                      return true;
                    }
                   else
                    return false;
-               }
-           }
-            else if(estado)//Si hay un tokens mal escrito          
-              return false;  
-            
+               
+                }
+                else if(estado)//Si hay un tokens mal escrito          
+                   return false;  
+          }
+          else 
+              return DescomponerTokens(examinar);
+          
         return encontrado;
     }
   
@@ -207,18 +186,18 @@ public class ManejoErrores {
                   InsertarArray(auxliar, var);
                   boolean estado = false;
                   if(tokens.charAt(index) == 60){ //Evalua si es un <=
-                      if((tokens.indexOf(tokens.charAt(index))+1) != tokens.length()){ 
+                      if( (index+1) != tokens.length()){ 
                           estado = tokens.charAt(index + 1) == 61?true:false; 
                           if(estado){ InsertarArray(auxliar,"<="); index++; }}
                   }
                   else if(tokens.charAt(index) == 61){ //Evalua si es un ==
-                      if((tokens.indexOf(tokens.charAt(index))+1) != tokens.length()){ 
+                      if( (index+1) != tokens.length()){ 
                           estado = tokens.charAt(index + 1) == 61?true:false;
                           if(estado){ InsertarArray(auxliar,"=="); index++; }
                       }
                   }
                   else if(tokens.charAt(index) == 62){//Evalua si es un >=
-                      if((tokens.indexOf(tokens.charAt(index))+1) != tokens.length()){ 
+                      if( (index+1)!= tokens.length()){ 
                           estado = tokens.charAt(index + 1) == 61?true:false;
                           if(estado){ InsertarArray(auxliar,">="); index++; }
                       }
